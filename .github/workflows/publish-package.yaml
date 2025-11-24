@@ -16,7 +16,6 @@ jobs:
           node-version: '20'
           registry-url: 'https://npm.pkg.github.com'
           # scope falls back to the repo owner
-      - run: npm ci
-      - run: npm publish --provenance
+      - run: cd javascript && npm ci && npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
