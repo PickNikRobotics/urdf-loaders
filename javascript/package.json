@@ -1,5 +1,5 @@
 {
-  "name": "urdf-loader",
+  "name": "@picknikrobotics/urdf-loader",
   "version": "0.12.6",
   "description": "URDF Loader for THREE.js and webcomponent viewer",
   "main": "src/URDFLoader.js",
@@ -19,7 +19,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gkjohnson/urdf-loaders.git"
+    "url": "git+https://github.com/PickNikRobotics/urdf-loaders"
   },
   "bugs": {
     "url": "https://github.com/gkjohnson/urdf-loaders/issues"

@@ -8,6 +8,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+      packages: write
     steps:
       - uses: actions/checkout@v6
       # Setup .npmrc file to publish to npm
@@ -16,6 +17,6 @@ jobs:
           node-version: '20'
           registry-url: 'https://npm.pkg.github.com'
           # scope falls back to the repo owner
-      - run: cd javascript && npm ci && npm publish --provenance
+      - run: cd javascript && npm ci && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
