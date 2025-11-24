@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('three'), require('three/examples/jsm/loaders/STLLoader.js'), require('three/examples/jsm/loaders/ColladaLoader.js')) :
-    typeof define === 'function' && define.amd ? define(['three', 'three/examples/jsm/loaders/STLLoader.js', 'three/examples/jsm/loaders/ColladaLoader.js'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.URDFLoader = factory(global.THREE, global.THREE, global.THREE));
-})(this, (function (THREE, STLLoader_js, ColladaLoader_js) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('three'), require('three/examples/jsm/loaders/STLLoader.js'), require('three/examples/jsm/loaders/ColladaLoader.js'), require('three/examples/jsm/loaders/OBJLoader.js')) :
+    typeof define === 'function' && define.amd ? define(['three', 'three/examples/jsm/loaders/STLLoader.js', 'three/examples/jsm/loaders/ColladaLoader.js', 'three/examples/jsm/loaders/OBJLoader.js'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.URDFLoader = factory(global.THREE, global.THREE, global.THREE, global.THREE));
+})(this, (function (THREE, STLLoader_js, ColladaLoader_js, OBJLoader_js) { 'use strict';
 
     function _interopNamespace(e) {
         if (e && e.__esModule) return e;
@@ -1131,6 +1131,11 @@
 
                 const loader = new ColladaLoader_js.ColladaLoader(manager);
                 loader.load(path, dae => done(dae.scene));
+
+            } else if (/\.obj$/i.test(path)) {
+
+                const loader = new OBJLoader_js.OBJLoader(manager);
+                loader.load(path, obj => done(obj));
 
             } else {
 
