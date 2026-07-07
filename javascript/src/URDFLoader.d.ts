@@ -6,7 +6,7 @@ interface MeshLoadDoneFunc {
 }
 
 interface MeshLoadFunc{
-    (url: string, manager: LoadingManager, onLoad: MeshLoadDoneFunc): void;
+    (url: string, manager: LoadingManager, onLoad: MeshLoadDoneFunc, isCollisionNode?: boolean): void;
 }
 
 export default class URDFLoader {

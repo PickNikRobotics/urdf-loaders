@@ -569,7 +569,7 @@ class URDFLoader {
 
                                 }
 
-                            });
+                            }, isCollisionNode);
 
                         }
 

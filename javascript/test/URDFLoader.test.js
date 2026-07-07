@@ -233,6 +233,50 @@ describe('Options', () => {
 
     });
 
+    describe('collision node flag', () => {
+
+        const urdf = `
+            <robot>
+                <link name="Body">
+                    <visual>
+                        <geometry>
+                            <mesh filename="visual.stl" />
+                        </geometry>
+                    </visual>
+                    <collision>
+                        <geometry>
+                            <mesh filename="collision.stl" />
+                        </geometry>
+                    </collision>
+                </link>
+            </robot>
+        `;
+
+        it('passes isCollisionNode to loadMeshCb (false for visual, true for collision)', () => {
+
+            const loader = new URDFLoader();
+            loader.parseCollision = true;
+
+            const calls = [];
+            loader.loadMeshCb = (url, manager, done, isCollisionNode) => {
+
+                calls.push({ url, isCollisionNode });
+
+            };
+
+            loader.parse(urdf);
+
+            const visual = calls.find(c => c.url.includes('visual.stl'));
+            const collision = calls.find(c => c.url.includes('collision.stl'));
+            expect(visual).toBeDefined();
+            expect(collision).toBeDefined();
+            expect(visual.isCollisionNode).toBeFalsy();
+            expect(collision.isCollisionNode).toBe(true);
+
+        });
+
+    });
+
     describe('packages', () => {
 
         const urdf = `
